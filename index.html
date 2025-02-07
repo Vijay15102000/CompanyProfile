@@ -23,6 +23,39 @@
         h1, h2 {
             color: #333;
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+            width: 300px;
+            border-radius: 8px;
+        }
+        .text {
+            max-width: 300px;
+            margin-left: 20px;
+        }
+        .text h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .text p {
+            font-size: 1em;
+            color: #555;
+        }
+        .reverse .text {
+            margin-left: 0;
+            margin-right: 20px;
+        }
 
         /* Header */
         .head {
@@ -62,6 +95,42 @@
             color: white;
             font-weight: bold;
         }
+        .image-info-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .image-container {
+        position: relative;
+    }
+
+    .image-box {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        position: absolute;
+    }
+
+    .image-box.left {
+        left: 10%;
+        top: 0;
+    }
+
+    .image-box.right {
+        right: 10%;
+        top: 0;
+    }
+
+    .image-box img {
+        width: 150px;
+        height: 150px;
+        margin-right: 15px;
+    }
+
+    .image-box p {
+        max-width: 300px;
+    }
 
         /* Mobile Menu Icon */
         .menu-icon {
@@ -592,6 +661,35 @@
     <section id="home">
         <h2>Welcome to Logitech limted</h2>
         <p>Your partner for digital transformation and growth.</p>
+        <div class="container">
+            <div class="item">
+                <img src="outdoor.jpg" alt="Out Door Activities" />
+                <div class="text">
+                    <h2>Out Door Activities</h2>
+                    <p>Outdoor activities in a company offer a refreshing change from the usual office environment, providing employees with opportunities to bond, de-stress, and engage in fun, physical activities. From my perspective, these activities can play a crucial role in building team spirit, encouraging collaboration, and fostering better communication among colleagues.</p>
+                </div>
+            </div>
+    
+            <div class="item reverse">
+                <div class="text">
+                    <h2>Our Teams</h2>
+                    <p>A good team is one where members collaborate effectively towards a common goal, leveraging each other's strengths while compensating for weaknesses. Communication is open and transparent, with individuals feeling comfortable sharing ideas, feedback, and concerns.</p>
+                </div>
+                <img src="ecommerce.jpg" alt="Our Teams" />
+            </div>
+    
+            <div class="item">
+                <img src="faility.jpg" alt="Our Teams" />
+                <div class="text">
+                    <h2>Facitities</h2>
+                    <p>Office Space: Adequate workspace for employees, including desks, chairs, and ergonomic furniture.
+                        Restrooms: Clean and well-maintained bathrooms for employees.
+                        Break Rooms: Areas where employees can relax, have meals, or take breaks.
+                        Parking: Designated parking spaces for employees and visitors.
+                        Internet and Wi-Fi: Reliable internet connectivity for work-related tasks.</p>
+                </div>
+            </div>
+        </div>
         
     </section>
     
@@ -686,7 +784,7 @@
             <img src="larsen.jpg" alt="Client 4" class="client-image">
 
         </marquee>
-            <!-- Add more client images as needed -->
+            
           </div>
         </div>
       </section>

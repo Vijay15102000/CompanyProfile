@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logitech limited</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        /* Header */
+        .head {
+                background-image: url(compute.jpg);
+                background-size: cover; 
+                background-repeat: no-repeat;
+                background-position: center; 
+                height: 100vh; 
+            }
+        header {
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color:white;
+            display: flex;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Mobile Menu Icon */
+        .menu-icon {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 2rem;
+        }
+
+        .menu-icon span {
+            background-color: white;
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 6px 0;
+        }
+
+        /* Mobile Menu */
+        .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: #333;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 2px;
+    width: 60vw; /* Standard mobile width */
+    max-height: 50vh; /* Limits height to half the screen */
+    overflow-y: auto; /* to Enable scrolling if content exceeds max-height */
+}
+
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-weight: bold;
+            padding: 10px;
+        }
+        #mobileMenu {
+    display: none; /* Hide the menu initially */
+        }
+
+        .menu a:hover {
+            
+            background-color: #555;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .services h1{
+            text-align: center;
+        }
+
+        .services, .portfolio {
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .services-container, .portfolio-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: #166996f0;
+            border-radius: 10px;
+            
+        }
+
+
+        .service, .project {
+            background: #fff;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .service:hover, .project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+
+        .service img, .project img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .service h3, .project h3 {
+            margin-top: 10px;
+        }
+
+        .portfolio {
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+
+        .contact {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+        }
+        .contact {
+        background: #222;
+        color: white;
+        padding: 40px;
+        position: relative;
+        text-align: center;
+    }
+
+    /* Contact Form */
+    footer.contact {
+        background: #1a1a1a;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .contact h2 {
+        margin-bottom: 10px;
+        font-size: 20px;
+        color:white;
+    }
+
+    .contact-details p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        max-width: 350px;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .contact-form textarea {
+        height: 80px;
+        resize: none;
+    }
+
+    .contact-form button {
+        background: #6707a3;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 6px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+        
+        /* Chatbot */
+        .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding:20px;
+        width: fit-content;
+        height: 400px;
+        background: #191212;
+        border-radius: 10px;
+        box-shadow: none;
+        display: none;
+        flex-direction: column;
+        
+    }
+
+    .chatbot-container .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .chatbot-container .messages .message {
+        display: flex;
+        flex-direction: column;
+        margin: 5px 0;
+    }
+
+    .chatbot-container .messages .message.user {
+        align-items: flex-end;
+    }
+
+    .chatbot-container .messages .message.bot {
+        align-items: flex-start;
+    }
+
+    .chatbot-container .messages .message .text {
+        padding: 8px 12px;
+        border-radius: 8px;
+        max-width: 75%;
+        font-size: 14px;
+    }
+
+    .chatbot-container .messages .message.user .text {
+        background-color: #25d366;
+        color: white;
+        border-radius: 18px 18px 0 18px;
+    }
+
+    .chatbot-container .messages .message.bot .text {
+        background-color: white;
+        color: #333;
+        border-radius: 18px 18px 18px 0;
+    }
+
+    .chatbot-container input {
+        width: 80%;
+        padding: 12px;
+        border: none;
+        border-top: 1px solid #ccc;
+        font-size: 16px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .chatbot-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25d366;
+        color: white;
+        padding: 15px;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+    .input-container{
+        display: flex;
+        padding:10px;
+        width:100%;
+        gap:10px;
+    }
+    .input-container button{
+        border-radius: 10px;
+        width:50px;
+        background-color: #ff0404;
+        color:white;
+        
+    }
+    
+    
+        .clients-section {
+            margin:20px;
+  text-align: center;
+  padding: 20px;
+  background-color:#166996f0;
+  border-radius: 10px;
+}
+
+
+#about{
+    
+    align-content: center;
+    border-radius: 10px;
+    margin:20px;
+    background-color: #93B1B5;
+    color:#333;
+}
+.clients-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: hsl(0, 0%, 100%);
+  
+  
+}
+
+.marquee-container {
+
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.client-image {
+  margin: 0 20px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.career {
+        padding: 40px 20px;
+        text-align: center;
+        background: #fff;
+    }
+
+    .career h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #312e2e;
+    }
+
+    .job-listings {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .job {
+        background: #f0eeee;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px;
+        width: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .job h3 {
+        margin-bottom: 10px;
+    }
+
+    .job p {
+        color: #555;
+    }
+
+    .job button {
+        background-color: #6707a3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .job button:hover {
+        background-color: #4a046e;
+    }
+    #animatedText {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+    
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .service, .project {
+                width: 100%;
+            }
+
+            .services, .portfolio {
+                flex-direction: column;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                
+                z-index: 1000;
+                display: flex;
+                height:fit-content;
+                overflow-block:auto;
+            }
+            .job {
+            width: 100%;
+        }
+        .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding:20px;
+        width: 50%;
+        height: 200px;
+        background: #191212;
+        border-radius: 10px;
+        box-shadow: none;
+        display: none;
+        flex-direction: column;
+        
+    }
+
+    .chatbot-container .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .chatbot-container .messages .message {
+        display: flex;
+        flex-direction: column;
+        margin: 5px 0;
+    }
+
+    .chatbot-container .messages .message.user {
+        align-items: flex-end;
+    }
+
+    .chatbot-container .messages .message.bot {
+        align-items: flex-start;
+    }
+
+    .chatbot-container .messages .message .text {
+        padding: 8px 12px;
+        border-radius: 8px;
+        max-width: 75%;
+        font-size: 14px;
+    }
+
+    .chatbot-container .messages .message.user .text {
+        background-color: #25d366;
+        color: white;
+        border-radius: 18px 18px 0 18px;
+    }
+
+    .chatbot-container .messages .message.bot .text {
+        background-color: white;
+        color: #333;
+        border-radius: 18px 18px 18px 0;
+    }
+
+    .chatbot-container input {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-top: 1px solid #ccc;
+        font-size: 16px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .chatbot-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25d366;
+        color: white;
+        padding: 15px;
+        border-radius: 35px;
+        cursor: pointer;
+    }
+    .contact-form {
+            width: 90%;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            max-width: 100%;
+        }
+    
+}
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+     <div class="head">
+    <header>
+        <h1>Logitech limited</h1>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    <div>
+        <div class="menu" id="mobileMenu">
+      
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+            <a href="#career">career</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#career">Careers</a></li>
+            </ul>
+        </nav>
+    </div>
+       
+        
+        
+    </header>
+    <p id="animatedText"></p>
+</div>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h2>Welcome to Logitech limted</h2>
+        <p>Your partner for digital transformation and growth.</p>
+        
+    </section>
+    
+    
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Logitech, our purpose is to extend human potential in work and play.
+
+            We do this by designing software-enabled hardware solutions that drive superior performance when gaming and superior productivity while at work, all with maximum comfort, speed and accuracy. We enable creativity when pursuing passions and connectivity so everyone is seen, heard and can contribute in their own unique way.
+            
+            As a Swiss company focused on innovation and quality, our products are the point of connection between people and the digital world. We harness the transformative power of design to drive innovation and progress throughout our portfolio in order to deliver truly unique and meaningful experiences. With products available in nearly every country and more than 3.5 million items shipped each week, Logitech is dedicated to driving outcomes that are better for people and planet, reducing our environmental impact by leading the industry in designing for sustainability.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div>
+        <h2>Our Services</h2>
+        </div>
+        <div class="services-container">
+        <div class="service">
+            <img src="webdeveopment.jpg" alt="Service 1">
+            <h3>Web Development</h3>
+            <p>We build responsive and scalable websites tailored to your needs.</p>
+        </div>
+        <div class="service">
+            <img src="mobile app development.jpg" alt="Service 2">
+            <h3>Mobile App Development</h3>
+            <p>We create user-friendly mobile apps that provide seamless experiences.</p>
+        </div>
+        <div class="service">
+            <img src="cloud.jpg" alt="Service 3">
+            <h3>Cloud Solutions</h3>
+            <p>We offer cloud-based solutions that improve business performance and security.</p>
+        </div>
+    </div>
+    </section>
+    <!--Career section-->
+    <section id="career" class="career">
+        <h2>Careers</h2>
+        <p>Join our team and build a future with us. We are looking for talented professionals to be part of our journey.</p>
+    
+        <div class="job-listings">
+            <div class="job">
+                <h3>Software Engineer</h3>
+                <p>We are looking for a skilled Software Engineer with experience in full-stack development.</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job">
+                <h3>UI/UX Designer</h3>
+                <p>Creative and passionate designers who can enhance user experience are welcome.</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="job">
+                <h3>Cloud Engineer</h3>
+                <p>Experienced Cloud Engineers with knowledge in AWS, Azure, and DevOps practices.</p>
+                <button>Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>Our Portfolio</h2>
+       <div class="portfolio-container"> 
+                <div class="project">
+                    <img src="finance.jpg" alt="Project 1">
+                    <h3>Finance Application</h3>
+                    <p>A custom web application for a financial institution.</p>
+                </div>
+                <div class="project">
+                    <img src="ecommerce.jpg" alt="Project 2">
+                    <h3>Ecommerce Web application</h3>
+                    <p>A mobile app designed for e-commerce.</p>
+                </div>
+                <div class="project">
+                    <img src="cloudcompute.jpg" alt="Project 3">
+                    <h3>Cloud integration</h3>
+                    <p>Cloud integration for a global manufacturing company.</p>
+                </div>
+        </div>
+    </section>
+    <section class="clients-section">
+        <h2>Our Clients</h2>
+        <div class="marquee-container">
+          <div class="marquee">
+            <marquee>
+            <img src="shell.png" alt="Client 2" class="client-image">
+            <img src="john.jpg" alt="Client 3" class="client-image">
+            <img src="tseries.png" alt="Client 4" class="client-image">
+            <img src="larsen.jpg" alt="Client 4" class="client-image">
+
+        </marquee>
+            <!-- Add more client images as needed -->
+          </div>
+        </div>
+      </section>
+      
+    <!-- Contact Section -->
+    <footer class="contact">
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or want to discuss a project, feel free to reach out to us.</p>
+    
+            <div class="contact-details">
+                <p><strong>Phone:</strong> +91 90XXXXXX95</p>
+                <p><strong>Email:</strong> vijXXXXXXX@gmail.com</p>
+            </div>
+    
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            
+    
+            <h2>&copy; 2025</h2>
+        </section>
+    </footer>
+    <!-- Chatbot Button -->
+    <div class="chatbot-btn" onclick="toggleChatbot()">💬Chat</div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="messages" id="chatMessages"></div>
+        <div class="input-container">
+            <input type="text" id="chatInput" placeholder="Type a message..." onkeydown="sendMessage(event)">
+            <button onclick="sendMessageFromButton()">Send</button>
+        </div>
+    </div>
+    
+   
+
+    <script>
+
+const text = "Welcome to Logitech Limited. Experience the best services in the industry.";
+const words = text.split(" ");
+const container = document.createElement("div");
+container.style.position = "absolute";
+container.style.top = "50%";
+container.style.left = "50%";
+container.style.transform = "translate(-50%, -50%)";
+container.style.textAlign = "center";
+container.style.width = "50vw"; // Responsive width
+container.style.color = "white";
+ // Responsive font size
+container.style.maxWidth = "600px"; // Limit maximum width
+container.style.wordWrap = "break-word";
+document.body.appendChild(container);
+function checkDeviceWidth() {
+    if (window.innerWidth < 700) {
+       
+        container.style.fontSize = "5vw";
+    } else {
+        container.style.fontSize = "2vw";
+    }
+}
+
+// Run on page load
+checkDeviceWidth();
+
+// Run on window resize
+window.addEventListener("resize", checkDeviceWidth);
+let line = "";
+let index = 0;
+
+function typeEffect(element, word, callback) {
+    let i = 0;
+    function typing() {
+        if (i < word.length) {
+            element.textContent += word[i];
+            i++;
+            setTimeout(typing, 100); // Typing speed
+        } else {
+            setTimeout(callback, 300); // Pause before next word
+        }
+    }
+    typing();
+}
+
+function displayLineByLine() {
+    if (index < words.length) {
+        let testLine = line + words[index] + " ";
+
+        let temp = document.createElement("span");
+        temp.style.visibility = "hidden";
+        temp.style.whiteSpace = "nowrap";
+        temp.style.fontSize = "2vw";
+        temp.textContent = testLine;
+        document.body.appendChild(temp);
+
+        if (temp.offsetWidth <= container.offsetWidth) {
+            line = testLine;
+        } else {
+            let p = document.createElement("p");
+            p.style.margin = "0";
+            p.style.padding = "5px 0";
+            container.appendChild(p);
+
+            typeEffect(p, line, () => {
+                line = words[index] + " ";
+                index++;
+                displayLineByLine();
+            });
+
+            document.body.removeChild(temp);
+            return;
+        }
+
+        document.body.removeChild(temp);
+        index++;
+        setTimeout(displayLineByLine, 500);
+    } else if (line) {
+        let p = document.createElement("p");
+        p.style.margin = "0";
+        p.style.padding = "5px 0";
+        container.appendChild(p);
+        typeEffect(p, line, () => {
+            setTimeout(resetAnimation, 2000); // Pause before restart
+        });
+    }
+}
+
+function resetAnimation() {
+    container.innerHTML = ""; // Clear text
+    line = "";
+    index = 0;
+    setTimeout(displayLineByLine, 1000); // Restart animation
+}
+
+window.onload = displayLineByLine;
+
+
+
+
+ // Start animation on page load
+        // Toggle the mobile menu visibility
+        function toggleMenu() {
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (mobileMenu.style.display === "flex") {
+        closeMenu();
+    } else {
+        mobileMenu.style.display = "flex";
+        setTimeout(() => {
+            document.addEventListener("click", closeMenuOnClickOutside);
+        }, 0);
+    }
+}
+
+function closeMenu() {
+    const mobileMenu = document.getElementById("mobileMenu");
+    mobileMenu.style.display = "none";
+    document.removeEventListener("click", closeMenuOnClickOutside);
+}
+
+// Close menu when screen resizes above 700px
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 700) {
+        closeMenu();
+    }
+});
+
+function closeMenuOnClickOutside(event) {
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuButton = document.getElementById("menuButton");
+
+    if (mobileMenu && event.target !== mobileMenu && !mobileMenu.contains(event.target) && event.target !== menuButton) {
+        closeMenu();
+    }
+}
+
+
+
+        // Chatbot logic
+        let chatbotVisible = false;
+        let messages = [];
+        const companyName = "Logitech limited"; // The company name
+
+        function toggleChatbot() {
+            chatbotVisible = !chatbotVisible;
+            document.getElementById("chatbot").style.display = chatbotVisible ? "flex" : "none";
+        }
+        // Update the sendMessage function to also trigger on button click
+function sendMessageFromButton() {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    
+    if (message) {
+        messages.push({ text: message, from: 'user' });
+        input.value = '';
+        displayMessages();
+        botResponse(message);
+    }
+}
+
+// Rest of the code remains the same
+
+
+        function sendMessage(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById("chatInput");
+                const message = input.value.trim();
+
+                if (message) {
+                    messages.push({ text: message, from: 'user' });
+                    input.value = '';
+                    displayMessages();
+                    botResponse(message);
+                }
+            }
+        }
+
+        function botResponse(userMessage) {
+            let botMessage = "";
+
+            // Respond based on the user's message
+            if (userMessage.toLowerCase().includes("what is your name") || userMessage.toLowerCase().includes("tell me your name") || userMessage.toLowerCase().includes("who are you")) {
+                botMessage = "My name is Saathi.";
+            } else if (userMessage.toLowerCase().includes("what is the company name") || userMessage.toLowerCase().includes("what is the company name")) {
+                botMessage = `The company name is ${companyName}.`;
+            } else if (userMessage.toLowerCase().includes("what you do") || userMessage.toLowerCase().includes("what is your work")) {
+                botMessage = "I am here to help you";
+            } else if (userMessage.toLowerCase().includes("hi")) {
+                botMessage = "Hi! How may I help you?";
+            } else if (userMessage.toLowerCase().includes("tell me about the company") || userMessage.toLowerCase().includes("about the company")) {
+                botMessage = "We are a team of passionate developers and designers focused on delivering high-quality IT solutions. We specialize in web development, mobile app development, and cloud solutions.";
+            } else {
+                botMessage = "Sorry, I didn't understand that.";
+            }
+
+            setTimeout(() => {
+                messages.push({ text: botMessage, from: 'bot' });
+                displayMessages();
+            }, 1000);
+        }
+
+        function displayMessages() {
+            const messagesContainer = document.getElementById("chatMessages");
+            messagesContainer.innerHTML = '';
+
+            messages.forEach(message => {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.classList.add(message.from);
+
+                const messageText = document.createElement("div");
+                messageText.classList.add("text");
+                messageText.textContent = message.text;
+
+                messageDiv.appendChild(messageText);
+                messagesContainer.appendChild(messageDiv);
+            });
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Close chatbot when clicking outside
+        document.addEventListener("click", function (event) {
+            const chatbotContainer = document.getElementById("chatbot");
+            const chatbotBtn = document.querySelector(".chatbot-btn");
+
+            if (!chatbotContainer.contains(event.target) && !chatbotBtn.contains(event.target)) {
+                if (chatbotVisible) {
+                    toggleChatbot(); // Close the chatbot if clicked outside
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
